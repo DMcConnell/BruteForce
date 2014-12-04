@@ -1,0 +1,143 @@
+package bruteForce;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+
+public class Gui extends JFrame
+{
+	static JPanel top, middle, middleBottom, bottom, finalBottom;
+	static JTextField password;
+	static JLabel rule1, rule2, rule3, title;
+	static JButton exit, go;
+	
+	public Gui()
+	{
+		event listener = new event();
+		
+		top = new JPanel();
+		middle = new JPanel();
+		middleBottom = new JPanel();
+		bottom = new JPanel();
+		finalBottom = new JPanel();
+		top.setLayout(new FlowLayout());
+		middle.setLayout(new BorderLayout());
+		middleBottom.setLayout(new FlowLayout());
+		bottom.setLayout(new FlowLayout());
+		finalBottom.setLayout(new BorderLayout());
+		
+		password = new JTextField(20);
+		title = new JLabel("Brute Force Password Cracker V1.0");
+		exit = new JButton("Exit");
+		go = new JButton("Go");
+		rule1 = new JLabel("  1) At least 6 characters, one upper and one lower  ");
+		rule2 = new JLabel("  2) At least one number");
+		rule3 = new JLabel("  3) At least one special character(&, ^, $)");
+		
+		go.addActionListener(listener);
+		exit.addActionListener(listener);
+		
+		top.add(title);
+		middle.add(rule1, BorderLayout.NORTH);
+		middle.add(rule2, BorderLayout.CENTER);
+		middle.add(rule3, BorderLayout.SOUTH);
+		middleBottom.add(password);
+		bottom.add(go);
+		bottom.add(exit);
+		finalBottom.add(middleBottom, BorderLayout.NORTH);
+		finalBottom.add(bottom, BorderLayout.SOUTH);
+		
+		setLayout(new BorderLayout());
+		add(top, BorderLayout.NORTH);
+		add(middle, BorderLayout.CENTER);
+		add(finalBottom, BorderLayout.SOUTH);
+	}
+	
+	public class event implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			Object source = e.getSource();
+			if(source == exit)
+			{
+				System.exit(99);
+			}
+			else if(source == go)
+			{
+				if(checkPW())
+				{
+					PasswordCracker thePWGetter = new PasswordCracker(password.getText());
+					crackingGUI cracker = new crackingGUI(password.getText());
+					cracker.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					cracker.setSize(240, 120);
+					cracker.setLocationRelativeTo(null);
+					cracker.setTitle("Cracking");
+					cracker.setVisible(true);
+				}
+				else
+				{
+					errorGUI error = new errorGUI();
+					error.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					error.pack();
+					error.setLocationRelativeTo(null);
+					error.setTitle("ERROR");
+					error.setVisible(true);
+				}
+			}
+		}
+	}
+	
+	public static boolean checkPW()
+	{
+		String pass = password.getText();
+		String temp;
+		int tempVal;
+		boolean number = false;
+		boolean speFig = false;
+		for(int i = 0; i < pass.length(); i++)
+		{
+			temp =  pass.substring(i,i+1);
+			tempVal = (int) temp.charAt(0);
+			if(temp.equals("1") || temp.equals("2") || temp.equals("3") || temp.equals("4") ||
+			   temp.equals("5") || temp.equals("6") || temp.equals("7") || temp.equals("8") ||
+			   temp.equals("9") || temp.equals("0"))
+			{
+				number = true;
+			}
+			if(tempVal < 48 || tempVal > 57)
+			{
+				if(tempVal < 65 || tempVal > 90)
+				{
+					if(tempVal < 97 || tempVal > 122)
+					{
+						speFig = true;
+					}
+				}
+			}
+		}
+		if(pass.length() > 5)
+		{
+			if(number == true)
+			{
+				if(speFig == true)
+					return true;
+				else
+					return false;
+			}
+			else
+				return false;
+		}
+		else
+			return false;
+	}
+	
+	public static void main(String [] args)
+	{
+		Gui gui = new Gui();
+		gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		gui.setLocationRelativeTo(null);
+		gui.setVisible(true);
+		gui.pack();
+		gui.setTitle("Brute Force Password Cracker V1.0");
+	}
+}

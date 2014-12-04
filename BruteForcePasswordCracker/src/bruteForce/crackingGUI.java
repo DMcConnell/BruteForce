@@ -3,12 +3,12 @@ package bruteForce;
 import javax.swing.*;
 import java.awt.*;
 
-public class crackingGUI extends JFrame
+public class CrackingGui extends JFrame
 {
 	static JPanel panel, centered;
 	static JLabel label;
 	
-	public crackingGUI(String solution)
+	public CrackingGui(String solution)
 	{
 		panel = new JPanel();
 		centered = new JPanel();

@@ -5,13 +5,13 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class ErrorGui extends JFrame
+public class errorGUI extends JFrame
 {
 	static JLabel errorMessage;
 	static JButton button;
 	static JPanel panel, bottom;
 	
-	public ErrorGui()
+	public errorGUI()
 	{
 		event listener = new event();
 		errorMessage = new JLabel("  Your password did not fufill the rule requirements!  ");

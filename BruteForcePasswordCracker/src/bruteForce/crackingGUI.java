@@ -1,14 +1,15 @@
 package bruteForce;
 
 import javax.swing.*;
+
 import java.awt.*;
 
-public class CrackingGui extends JFrame
+public class crackingGUI extends JFrame
 {
 	static JPanel panel, centered;
 	static JLabel label;
 	
-	public CrackingGui(String solution)
+	public crackingGUI(String solution)
 	{
 		panel = new JPanel();
 		centered = new JPanel();
@@ -18,5 +19,7 @@ public class CrackingGui extends JFrame
 		centered.add(label);
 		panel.add(centered, BorderLayout.CENTER);
 		add(panel);
+		//dictionaryAttempt dicAttempt = new dictionaryAttempt(solution);
+		//label.setText(dicAttempt.toString());
 	}
 }

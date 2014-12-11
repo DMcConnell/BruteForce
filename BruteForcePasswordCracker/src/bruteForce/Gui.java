@@ -66,8 +66,7 @@ public class Gui extends JFrame
 			{
 				if(checkPW())
 				{
-					dictionaryAttempt dicAttempt = new dictionaryAttempt(password.getText());
-					CrackingGui cracker = new CrackingGui(password.getText());
+					crackingGUI cracker = new crackingGUI(password.getText());
 					cracker.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					cracker.setSize(240, 120);
 					cracker.setLocationRelativeTo(null);
@@ -76,7 +75,7 @@ public class Gui extends JFrame
 				}
 				else
 				{
-					ErrorGui error = new ErrorGui();
+					errorGUI error = new errorGUI();
 					error.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 					error.pack();
 					error.setLocationRelativeTo(null);

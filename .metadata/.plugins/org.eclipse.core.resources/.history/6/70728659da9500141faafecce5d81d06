@@ -20,16 +20,15 @@ public class charAttempt
 	
 	public String loops(int numTimes, String solution)
 	{
-		for(int i = 0; i < numTimes; i++)
+		String attempt = "";
+		if(numTimes == 0)
 		{
 			
 		}
-		return "a";
-	}
-	
-	public String getLetter()
-	{
-		
+		else
+		{
+			attempt += loops(numTimes - 1, solution);
+		}
 	}
 	
 	public String toString()

@@ -30,8 +30,8 @@ public class Gui extends JFrame
 		title = new JLabel("Brute Force Password Cracker V1.0");
 		exit = new JButton("Exit");
 		go = new JButton("Go");
-		rule1 = new JLabel("  1) At least 6 characters, one upper and one lower  ");
-		rule2 = new JLabel("  2) At least one number");
+		rule1 = new JLabel("  1) At least 6 characters and no more than 10  ");
+		rule2 = new JLabel("  2) At least one number and one uppercase letter  ");
 		rule3 = new JLabel("  3) At least one special character(&, ^, $)");
 		
 		go.addActionListener(listener);
@@ -114,7 +114,7 @@ public class Gui extends JFrame
 				}
 			}
 		}
-		if(pass.length() > 5)
+		if(pass.length() > 5 && pass.length() < 11)
 		{
 			if(number == true)
 			{

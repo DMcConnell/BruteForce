@@ -1,33 +1,72 @@
 package bruteForce;
 
+import java.util.ArrayList;
+
 public class charAttempt
 {
 	String finalized = "";
+	String accurate;
+	boolean finished = false;
+	boolean loopFinish = false;
+	ArrayList<Character> letters = new ArrayList<Character>();
 	
 	public charAttempt(String solution)
 	{
-		String whatWeGot;
-		for(int i = 6; i < 1000; i++)
+		char[] extender;
+		accurate = solution;
+		extender = Character.toChars(0);
+		for(int i = 0; i < 6; i++)
+			letters.add(extender[0]);
+		for(int i = 6; i < 10; i++)
 		{
-			whatWeGot = loops(i, solution);
-			if(whatWeGot.equals(solution))
-			{
-				finalized = whatWeGot;
+			tryLength();
+			if(finished == true)
 				break;
-			}
 		}
 	}
 	
-	public String loops(int numTimes, String solution)
+	public void tryLength()
 	{
-		String attempt = "";
-		char[] jerks;
-		for(int j = 0; j < 6; j++)
+		int fromEnd = 1;
+		while(letters.size() - fromEnd > -1)
 		{
-			jerks = Character.toChars(0);
-			attempt += Character.toString(jerks[0]);
+			if(fromEnd == 1)
+				cycle(fromEnd);
+			else
+			{
+				
+			}
 		}
-		
+
+	}
+	
+	public void cycle(int fromEnd)
+	{
+		for(int i = 0; i < 127; i++)
+		{
+			increment(letters.size()-fromEnd);
+			check();
+			if(finished == true)
+				break;
+		}
+	}
+	
+	public void increment(int place)
+	{
+		char[] temp2;
+		int temp = (int)letters.get(place);
+		temp++;
+		temp2 = Character.toChars(temp);
+		letters.set(place,temp2[0]);
+	}
+	
+	public void check()
+	{
+		String temp = "";
+		for(int i = 0; i < letters.size(); i++)
+			temp += letters.get(i);
+		if(temp.equals(accurate))
+			finished = true;
 	}
 	
 	public String toString()

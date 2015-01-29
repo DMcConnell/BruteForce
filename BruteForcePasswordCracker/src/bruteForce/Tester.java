@@ -1,19 +1,25 @@
 package bruteForce;
 
+import java.util.*;
+
 public class Tester
 {
+	static ArrayList<Character> letters = new ArrayList<Character>();
+	static int place;
+	
 	public static void main(String [] args)
 	{
-		String attempt = "";
-		char[] jerks;
-		for(int i = 96; i < 97; i++)
+		for(int i = 0; i < 6; i++)
+			letters.add('a');
+		place = letters.size()-1;
+		char[] temp2;
+		int temp = (int)letters.get(place);
+		temp++;
+		temp2 = Character.toChars(temp);
+		letters.set(place,temp2[0]);
+		for(int i = 0; i < 6; i++)
 		{
-			for(int j = 0; j < 6; j++)
-			{
-				jerks = Character.toChars(i);
-				attempt += Character.toString(jerks[0]);
-			}
+			System.out.print(letters.get(i));
 		}
-		System.out.print(attempt);
 	}
 }

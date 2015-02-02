@@ -34,15 +34,7 @@ public class charAttempt
 				cycle(fromEnd);
 			else
 			{
-				fromEnd++;
-				int temp = fromEnd;
-				while(temp > 1)
-				{
-					for(int i = 0; i < 127; i++)
-					{
-						increment(letters.size() - fromEnd);
-					}
-				}
+				
 			}
 		}
 
